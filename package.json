@@ -1,0 +1,95 @@
+{
+  "name": "nuxt-typescript-starter",
+  "version": "1.0.0",
+  "description": "Nuxt + Typescript is awesome! :)",
+  "author": "trastanechora",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "generate": "nuxt generate",
+    "start": "nuxt start",
+    "lint": "eslint --ext .ts,.vue --ignore-path .gitignore .",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.13.6",
+    "@nuxtjs/dotenv": "^1.4.1",
+    "@nuxtjs/pwa": "^3.3.5",
+    "nuxt": "2.15.8",
+    "nuxt-property-decorator": "^2.7.2",
+    "vuex": "^3.5.1"
+  },
+  "devDependencies": {
+    "@nuxt/typescript-build": "^2.1.0",
+    "@nuxtjs/eslint-config-typescript": "^1.0.0",
+    "@nuxtjs/eslint-module": "^1.0.0",
+    "@nuxtjs/vuetify": "^1.12.1",
+    "@types/jest": "^26.0.5",
+    "@vue/test-utils": "^1.0.0-beta.27",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^24.1.0",
+    "eslint": "^6.1.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-nuxt": ">=0.4.2",
+    "eslint-plugin-prettier": "^3.1.2",
+    "jest": "^24.1.0",
+    "prettier": "^2.3.2",
+    "ts-jest": "^25.0.0",
+    "vue-jest": "^4.0.0-0"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "browser": true,
+      "node": true
+    },
+    "extends": [
+      "@nuxtjs/eslint-config-typescript",
+      "prettier",
+      "prettier/vue",
+      "plugin:prettier/recommended",
+      "plugin:nuxt/recommended"
+    ],
+    "plugins": [
+      "prettier"
+    ],
+    "rules": {}
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/$1",
+      "^~/(.*)$": "<rootDir>/$1",
+      "^vue$": "vue/dist/vue.common.js"
+    },
+    "moduleFileExtensions": [
+      "ts",
+      "js",
+      "vue",
+      "json"
+    ],
+    "transform": {
+      "^.+\\.ts$": "ts-jest",
+      "^.+\\.js$": "babel-jest",
+      ".*\\.(vue)$": "vue-jest"
+    },
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "<rootDir>/components/**/*.vue",
+      "<rootDir>/pages/**/*.vue"
+    ],
+    "coverageReporters": [
+      "html",
+      "text",
+      "lcov"
+    ]
+  },
+  "prettier": {
+    "semi": true,
+    "arrowParens": "always",
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "none",
+    "printWidth": 80
+  }
+}
