@@ -1,3 +1,5 @@
+import colors from 'vuetify/es5/util/colors';
+
 const nuxtConfig = {
   ssr: false,
   head: {
@@ -17,8 +19,8 @@ const nuxtConfig = {
   loading: { color: '#fff' },
   pwa: {
     manifest: {
-      name: 'Your App Name',
-      short_name: 'YAN',
+      name: 'Doctor Visit App',
+      short_name: 'Dova',
       lang: 'id',
       useWebmanifestExtension: false,
       start_url: '/',
@@ -37,13 +39,23 @@ const nuxtConfig = {
       options: { customProperties: true },
       themes: {
         light: {
-          primary: '#1976D2',
+          primary: '#39ac37',
           secondary: '#424242',
           accent: '#82B1FF',
           error: '#FF5252',
           info: '#2196F3',
           success: '#4CAF50',
-          warning: '#FFC107'
+          warning: '#FFC107',
+          tone: '#f5f5f5'
+        },
+        dark: {
+          primary: colors.blue.darken2,
+          accent: colors.grey.darken3,
+          secondary: colors.amber.darken3,
+          info: colors.teal.lighten1,
+          warning: colors.amber.base,
+          error: colors.deepOrange.accent4,
+          success: colors.green.accent3
         }
       }
     }

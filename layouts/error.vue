@@ -15,7 +15,7 @@ import { Vue, Component, Prop } from 'nuxt-property-decorator';
 
 @Component
 export default class ErrorLayout extends Vue {
-  readonly name: string = 'default';
+  readonly name: string = 'error';
   layout() {
     return 'empty';
   }
