@@ -14,7 +14,7 @@
           <div class="mt-4">
             <v-card-text>
               <v-form
-                ref="addPatientdForm"
+                ref="addVisitdForm"
                 v-model="valid"
                 lazy-validation
                 class="pa-0"
@@ -23,7 +23,7 @@
                   <v-flex xs12>
                     <v-flex xs12>
                       <v-text-field
-                        v-model="currentPatient.name"
+                        v-model="currentVisit.name"
                         outlined
                         clearable
                         label="Judul Kartu"
@@ -37,7 +37,7 @@
                     </v-flex>
                     <v-flex xs12>
                       <v-text-field
-                        v-model="currentPatient.dateOfBirth"
+                        v-model="currentVisit.dateOfBirth"
                         outlined
                         clearable
                         label="Deskripsi Kartu"
@@ -87,11 +87,11 @@
 
 <script lang="ts">
 import { Component, Vue, Prop } from 'nuxt-property-decorator';
-import { notEmptyRules, EMPTY_PATIENT } from '~/@utils';
-import { Patient } from '~/@types';
+import { notEmptyRules, EMPTY_VISIT } from '~/@utils';
+import { Visit } from '~/@types';
 
 @Component
-export default class AddPatient extends Vue {
+export default class AddVisit extends Vue {
   /* ------------------------------------
   => Props declaration
   ------------------------------------ */
@@ -116,7 +116,7 @@ export default class AddPatient extends Vue {
   loading: boolean = true;
   valid: boolean = true;
   isEdit: boolean = false;
-  currentPatient: Patient = EMPTY_PATIENT;
+  currentVisit: Visit = EMPTY_VISIT;
 
   /* ------------------------------------
   => Setter and Getter

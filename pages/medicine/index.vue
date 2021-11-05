@@ -3,7 +3,7 @@
     <v-flex xs12>
       <v-card outlined>
         <v-card-title>
-          <h3 class="primary--text">Daftar Pasien</h3>
+          <h3 class="primary--text">Daftar Obat</h3>
           <v-spacer></v-spacer>
           <v-text-field
             v-model="searchString"
@@ -20,7 +20,7 @@
             class="ml-2"
             @click="() => editDialogState(true)"
           >
-            <v-icon left small>mdi-plus</v-icon>Tambah Pasien
+            <v-icon left small>mdi-plus</v-icon>Tambah Obat
           </v-btn>
         </v-card-title>
         <hr color="gray" />
@@ -44,7 +44,7 @@
                   >{{ item.name }}</v-btn
                 >
               </template>
-              <span>Lihat Detil Pasien</span>
+              <span>Lihat Responden</span>
             </v-tooltip>
           </template>
           <template #[`item.age`]="{ item }"
@@ -53,9 +53,6 @@
           <template #[`item.dateOfBirth`]="{ item }">{{
             formatDate(item.dateOfBirth)
           }}</template>
-          <template #[`item.address`]="{ item }">
-            {{ item.address.formatted }}
-          </template>
           <template #[`item.action`]="{ item }">
             <v-tooltip right>
               <template #activator="{ on, attrs }">
@@ -91,22 +88,25 @@
         </v-data-table>
       </v-card>
     </v-flex>
-    <AddPatient :dialog="dialog" :close-dialog="() => editDialogState(false)" />
+    <AddMedicine
+      :dialog="dialog"
+      :close-dialog="() => editDialogState(false)"
+    />
   </v-layout>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator';
 import { TableHeader } from '~/@types';
-import AddPatient from '~/components/AddPatient.vue';
+import AddMedicine from '~/components/AddMedicine.vue';
 import { ageFormatter, dateFormatter } from '~/@utils';
 
 @Component({
   components: {
-    AddPatient
+    AddMedicine
   }
 })
-export default class Patient extends Vue {
+export default class Medicine extends Vue {
   /* ------------------------------------
   => Local State Declaration
   ------------------------------------ */
@@ -118,15 +118,15 @@ export default class Patient extends Vue {
   ** (Adopt store variables to local state)
   ------------------------------------ */
   get isLoading(): boolean {
-    return this.$store.state.patient.isLoading;
+    return this.$store.state.medicine.isLoading;
   }
 
   get tableHeaders(): TableHeader {
-    return this.$store.state.patient.tableHeaders;
+    return this.$store.state.medicine.tableHeaders;
   }
 
-  get tableBody(): Patient[] {
-    return this.$store.state.patient.list;
+  get tableBody(): Medicine[] {
+    return this.$store.state.medicine.list;
   }
 
   /* ------------------------------------ 

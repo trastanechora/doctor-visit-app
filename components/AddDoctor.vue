@@ -8,7 +8,7 @@
     <template v-if="!loading">
       <v-card elevation="0">
         <v-card-title class="text-h6 primary white--text">
-          Tambahkan Pasien
+          Tambahkan Dokter
         </v-card-title>
         <v-card-text>
           <div class="mt-4">
@@ -23,7 +23,7 @@
                   <v-flex xs12>
                     <v-flex xs12>
                       <v-text-field
-                        v-model="currentPatient.name"
+                        v-model="currentDoctor.name"
                         outlined
                         clearable
                         label="Judul Kartu"
@@ -37,7 +37,7 @@
                     </v-flex>
                     <v-flex xs12>
                       <v-text-field
-                        v-model="currentPatient.dateOfBirth"
+                        v-model="currentDoctor.dateOfBirth"
                         outlined
                         clearable
                         label="Deskripsi Kartu"
@@ -87,8 +87,8 @@
 
 <script lang="ts">
 import { Component, Vue, Prop } from 'nuxt-property-decorator';
-import { notEmptyRules, EMPTY_PATIENT } from '~/@utils';
-import { Patient } from '~/@types';
+import { notEmptyRules, EMPTY_DOCTOR } from '~/@utils';
+import { Doctor } from '~/@types';
 
 @Component
 export default class AddPatient extends Vue {
@@ -116,7 +116,7 @@ export default class AddPatient extends Vue {
   loading: boolean = true;
   valid: boolean = true;
   isEdit: boolean = false;
-  currentPatient: Patient = EMPTY_PATIENT;
+  currentDoctor: Doctor = EMPTY_DOCTOR;
 
   /* ------------------------------------
   => Setter and Getter

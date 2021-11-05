@@ -1,4 +1,4 @@
-import Store, { UiState } from '../@types';
+import Store, { UiState } from '~/@types';
 
 /* ------------------------------------------------
   => State
@@ -7,19 +7,24 @@ export const state = (): UiState => ({
   darkMode: false,
   drawerNavMenu: [
     {
-      icon: 'mdi-apps',
+      icon: 'mdi-human-queue',
       title: 'Pasien',
       to: '/patient'
     },
     {
-      icon: 'mdi-chart-bubble',
+      icon: 'mdi-heart-pulse',
       title: 'Kunjungan',
       to: '/visit'
     },
     {
-      icon: 'mdi-chart-bubble',
+      icon: 'mdi-pill',
       title: 'Obat',
       to: '/medicine'
+    },
+    {
+      icon: 'mdi-stethoscope',
+      title: 'Dokter',
+      to: '/doctor'
     }
   ]
 });

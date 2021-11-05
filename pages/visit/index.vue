@@ -3,7 +3,7 @@
     <v-flex xs12>
       <v-card outlined>
         <v-card-title>
-          <h3 class="primary--text">Daftar Pasien</h3>
+          <h3 class="primary--text">Daftar Kunjungan</h3>
           <v-spacer></v-spacer>
           <v-text-field
             v-model="searchString"
@@ -20,7 +20,7 @@
             class="ml-2"
             @click="() => editDialogState(true)"
           >
-            <v-icon left small>mdi-plus</v-icon>Tambah Pasien
+            <v-icon left small>mdi-plus</v-icon>Tambah Kunjungan
           </v-btn>
         </v-card-title>
         <hr color="gray" />
@@ -32,30 +32,18 @@
           :loading="isLoading"
           class="mt-4"
         >
-          <template #[`item.name`]="{ item }">
-            <v-tooltip right>
-              <template #activator="{ on }">
-                <v-btn
-                  text
-                  small
-                  color="primary"
-                  v-on="on"
-                  @click="console.warn(item.uuid)"
-                  >{{ item.name }}</v-btn
-                >
-              </template>
-              <span>Lihat Detil Pasien</span>
-            </v-tooltip>
-          </template>
-          <template #[`item.age`]="{ item }"
-            >{{ getAge(item.dateOfBirth) }} Tahun</template
-          >
-          <template #[`item.dateOfBirth`]="{ item }">{{
-            formatDate(item.dateOfBirth)
+          <template #[`item.patient`]="{ item }">{{
+            item.patient.name
           }}</template>
-          <template #[`item.address`]="{ item }">
-            {{ item.address.formatted }}
-          </template>
+          <template #[`item.doctor`]="{ item }">{{
+            item.doctor.name
+          }}</template>
+          <template #[`item.schedule`]="{ item }">{{
+            dateTimeFormatter(item.schedule)
+          }}</template>
+          <template #[`item.createTime`]="{ item }">{{
+            formatDate(item.createTime)
+          }}</template>
           <template #[`item.action`]="{ item }">
             <v-tooltip right>
               <template #activator="{ on, attrs }">
@@ -91,22 +79,22 @@
         </v-data-table>
       </v-card>
     </v-flex>
-    <AddPatient :dialog="dialog" :close-dialog="() => editDialogState(false)" />
+    <AddVisit :dialog="dialog" :close-dialog="() => editDialogState(false)" />
   </v-layout>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator';
 import { TableHeader } from '~/@types';
-import AddPatient from '~/components/AddPatient.vue';
-import { ageFormatter, dateFormatter } from '~/@utils';
+import AddVisit from '~/components/AddVisit.vue';
+import { dateTimeFormatter, dateFormatter } from '~/@utils';
 
 @Component({
   components: {
-    AddPatient
+    AddVisit
   }
 })
-export default class Patient extends Vue {
+export default class Visit extends Vue {
   /* ------------------------------------
   => Local State Declaration
   ------------------------------------ */
@@ -118,15 +106,15 @@ export default class Patient extends Vue {
   ** (Adopt store variables to local state)
   ------------------------------------ */
   get isLoading(): boolean {
-    return this.$store.state.patient.isLoading;
+    return this.$store.state.visit.isLoading;
   }
 
   get tableHeaders(): TableHeader {
-    return this.$store.state.patient.tableHeaders;
+    return this.$store.state.visit.tableHeaders;
   }
 
-  get tableBody(): Patient[] {
-    return this.$store.state.patient.list;
+  get tableBody(): Visit[] {
+    return this.$store.state.visit.list;
   }
 
   /* ------------------------------------ 
@@ -141,8 +129,9 @@ export default class Patient extends Vue {
     return dateFormatter(birthDate);
   }
 
-  getAge(dateString: string): number {
-    return ageFormatter(dateString);
+  dateTimeFormatter(dateString: string): string {
+    const schedule = new Date(dateString);
+    return dateTimeFormatter(schedule);
   }
 }
 </script>

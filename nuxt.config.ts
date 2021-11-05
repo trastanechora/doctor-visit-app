@@ -3,8 +3,8 @@ import colors from 'vuetify/es5/util/colors';
 const nuxtConfig = {
   ssr: false,
   head: {
-    titleTemplate: '%s - ' + process.env.npm_package_name,
-    title: process.env.npm_package_name || '',
+    titleTemplate: '%s - ' + 'Doctor Visit App',
+    title: 'Doctor Visit Application',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },

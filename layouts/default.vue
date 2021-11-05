@@ -1,6 +1,12 @@
 <template>
   <v-app fixed app dark>
-    <v-navigation-drawer :mini-variant="miniVariant" clipped fixed app>
+    <v-navigation-drawer
+      mobile-breakpoint="0"
+      :mini-variant="miniVariant"
+      clipped
+      fixed
+      app
+    >
       <v-list>
         <v-list-item
           v-for="(item, i) in menuItems"
@@ -92,6 +98,7 @@ export default class DefaultLayout extends Vue {
   ------------------------------------ */
   readonly name: string = 'default';
   title: string = 'Doctor Visit App';
+  drawer: boolean = true;
   miniVariant: boolean = false;
 
   /* ------------------------------------

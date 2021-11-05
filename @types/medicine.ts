@@ -1,6 +1,10 @@
+import { Doctor, TableHeader } from '~/@types';
+
 export interface MedicineState {
-  medicineList: Medicine[];
-  currentMedicine: Medicine;
+  isLoading: boolean;
+  tableHeaders: TableHeader[];
+  list: Medicine[];
+  current: Medicine | null;
 }
 export interface Medicine {
   uuid: string;
@@ -8,5 +12,5 @@ export interface Medicine {
   code: string;
   createDate: string;
   lastUpdate: string;
-  lastUpdateBy: string;
+  updateBy?: Doctor | null;
 }

@@ -9,11 +9,22 @@ export enum MaritalStatus {
   DIVORCED = 'Cerai',
   EMPTY = ''
 }
+
+export interface BasicObject {
+  id: string;
+  name: string;
+}
 export interface Address {
-  province: string;
-  kabupaten: string;
-  kecamatan: string;
-  district: string;
+  street: string;
+  no: string;
+  rt: string;
+  rw: string;
+  province: BasicObject;
+  regency: BasicObject;
+  district: BasicObject;
+  subDistrict: BasicObject;
+  note: string;
+  formatted: string;
 }
 
 export interface TableHeader {

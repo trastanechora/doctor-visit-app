@@ -1,7 +1,7 @@
 {
-  "name": "nuxt-typescript-starter",
+  "name": "doctor-visit-app",
   "version": "1.0.0",
-  "description": "Nuxt + Typescript is awesome! :)",
+  "description": "a doctor's administration manager app",
   "author": "trastanechora",
   "private": true,
   "scripts": {

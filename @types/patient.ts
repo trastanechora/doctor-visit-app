@@ -1,10 +1,10 @@
-import { Address, Gender, MaritalStatus, TableHeader } from '~/@types';
+import { Address, Doctor, Gender, MaritalStatus, TableHeader } from '~/@types';
 
 export interface PatientState {
   isLoading: boolean;
   tableHeaders: TableHeader[];
-  patientList: Patient[];
-  currentPatient: Patient | null;
+  list: Patient[];
+  current: Patient | null;
 }
 export interface Patient {
   uuid: string;
@@ -15,5 +15,5 @@ export interface Patient {
   maritalStatus: MaritalStatus;
   createDate: string;
   updateDate: string;
-  updateBy: string;
+  updateBy?: Doctor | null;
 }

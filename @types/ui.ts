@@ -7,11 +7,3 @@ export interface SidebarMenuItem {
   title: string;
   to: string;
 }
-
-export enum FormStatus {
-  UNSTARTED = 'unstarted',
-  OPEN = 'open',
-  CLOSED = 'closed',
-  ENDED = 'ended',
-  DELETED = 'deleted'
-}
